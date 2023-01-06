@@ -19,9 +19,35 @@ export default function Home() {
   };
   return (
     <div>
-      {postLists.map((post) => {
-        return <div>{post.title}</div>;
-      })}
+      <div class="container">
+        <div class="row">
+          {postLists.map((post) => {
+            return (
+              <div class="col-md-3 border m-1 ">
+                <div className="text-primary">
+                  <h2>@{post.title}</h2>
+                </div>
+                <div>
+                  <p>{post.post}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {/* {postLists.map((post) => {
+        return <div class="col-md-3 border m-1">
+            <div className="text-primary">
+              <h2>@google</h2>
+            </div>
+            <div>
+              <p>
+                loreml ksdaf;lsj d;lk fsldkjf a;lsdf lksjdlfjsldjf lksdjfl
+                ksjdlfk sldkf lskdj flsjdlfkjsldkfjlsd fls dlf sldjf lsd fl{" "}
+              </p>
+            </div>
+          </div>;
+      })} */}
     </div>
   );
 }

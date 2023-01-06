@@ -8,7 +8,12 @@ export default function CreatePost({ isAuth }) {
   let navigate = useNavigate();
   // send date to firestore
   const postsCollectionRef = collection(db, "posts"); // get collection list
-  const createPost = async () => {
+  const createPost = async (e) => {
+    e.preventDefault();
+    if (!title || !post) {
+      alert("Empty field not allowed");
+      return;
+    }
     await addDoc(postsCollectionRef, {
       title,
       post,
@@ -22,16 +27,38 @@ export default function CreatePost({ isAuth }) {
     }
   }, []);
   return (
-    <div>
-      <div>
-        <label>Title</label>
-        <input onChange={(e) => setTitle(e.target.value)} type="test" />
+    <div className="container row mt-4">
+      <div className="col-md-4"></div>
+      <div className="col-md-6">
+        <div class="mb-3 ">
+          <label for="exampleFormControlInput1" class="form-label">
+            Blog Title
+          </label>
+          <input
+            required
+            onChange={(e) => setTitle(e.target.value)}
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Enter blog title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">
+            Blog Content
+          </label>
+          <textarea
+            required
+            onChange={(e) => setPost(e.target.value)}
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+          <button className="btn mt-3 btn-success" onClick={createPost}>
+            Submit Post
+          </button>
+        </div>
       </div>
-      <div>
-        <label>post</label>
-        <textarea onChange={(e) => setPost(e.target.value)} row="10" col="50" />
-      </div>
-      <button onClick={createPost}>Submit Post</button>
     </div>
   );
 }

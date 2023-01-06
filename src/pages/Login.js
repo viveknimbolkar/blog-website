@@ -12,8 +12,19 @@ export default function Login({ setIsAuth }) {
     });
   };
   return (
-    <div className="loginPage">
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <div className="container text-center mt-40">
+      <div
+        onClick={signInWithGoogle}
+        className="btn btn-outline-primary text-white"
+      >
+        <img
+          width="20px"
+          className="img-fluid"
+          src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg"
+          alt="google icon"
+        />
+        <button className="btn">Sign in with Google</button>
+      </div>
     </div>
   );
 }
