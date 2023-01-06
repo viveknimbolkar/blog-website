@@ -6,7 +6,6 @@ import Login from "./pages/Login";
 import { useState } from "react";
 import { auth } from "./firebase-config";
 import { signOut } from "firebase/auth";
-
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const signUserOut = () => {
